@@ -1,52 +1,85 @@
 document.addEventListener('DOMContentLoaded', startGame)
 
 // Define your `board` object here!
+
+//var board is an object containing one property - cells.
+//cells is an array containing nine sub-objects. 
+//each sub-object has multiple properties. 
+//row and col values defined by physical position on the board.
+//What is isMarked??? No instruction to include. 
+
 var board = {
   cells: [
-    {row: 0, col: 0, 
+    {
+      row: 0, col: 0, 
       isMine: true,
       hidden: true,
-    
+      surroundingMines: 0,
     },
-    {row: 0, col: 1, 
+
+    {
+      row: 0, col: 1, 
       isMine: false,
       hidden: true,
-    }, 
-    {row: 0, col: 2, 
-      isMine: false,
-      hidden: true,
-    }, 
-    {row: 1, col: 0, 
-      isMine: false,
-      hidden: true,
-    },
-    {row: 1, col: 1, 
-      isMine: false,
-      hidden: true,
-    }, 
-    {row: 1, col: 2, 
-      isMine: true,
-      hidden: true,
-    },
-    {row: 2, col: 0, 
-      isMine: false,
-      hidden: true,
-    },
-    {row: 2, col: 1, 
-      isMine: false,
-      hidden: true,
-    }, 
-    {row: 2, col: 2, 
-      isMine: true,
-      hidden: true,
+      surroundingMines: 2,
     }, 
 
+    {
+      row: 0, col: 2, 
+      isMine: false,
+      hidden: true,
+      surroundingMines: 1,
+    }, 
+
+    {
+      row: 1, col: 0, 
+      isMine: false,
+      hidden: true,
+      surroundingMines: 1,
+    },
+
+    {
+      row: 1, col: 1, 
+      isMine: false,
+      hidden: true,
+      surroundingMines: 2,
+    }, 
+
+    {
+      row: 1, col: 2, 
+      isMine: true,
+      hidden: true,
+      surroundingMines: 1,
+    },
+
+    {
+      row: 2, col: 0, 
+      isMine: false,
+      hidden: true,
+      surroundingMines: 0,
+    },
+
+    {
+      row: 2, col: 1, 
+      isMine: false,
+      hidden: true,
+      surroundingMines: 2,
+    }, 
+
+    {
+      row: 2, col: 2, 
+      isMine: true,
+      hidden: true,
+      surroundingMines: 1,
+    }, 
   ]
-
 }
 
 function startGame () {
-  // Don't remove this function call: it makes the game work!
+  for (var i = 0; i < board.cells.length; i++) {
+   
+  }
+
   lib.initBoard()
 }
 
