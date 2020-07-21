@@ -75,9 +75,11 @@ var board = {
   ]
 }
 
+//for loop iterates by one until it reaches zero. 
+//result of loop attaches to countSurroundingMines.
 function startGame () {
   for (var i = 0; i < board.cells.length; i++) {
-   
+   board.cells[i].surroundingMines = countSurroundingMines(board.cells[i])
   }
 
   lib.initBoard()
