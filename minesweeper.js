@@ -63,6 +63,8 @@ var board = {
 
 0 - Is my formatting of row and col on one line okay? It makes more 'visual' sense to me in understanding the physical layout. 
 
+0.5 - General question, is there a way to have the location of mines change using the math.random function. 
+
 1- Is surroundingMines last in the for loop call instruction because it is further down the body of the code? Initially I would not thought to have done this, as surroundingMines is a seperate function, and board, cells is it's own var of objects. I assumed that it would not connect....ah, is it because Board is a global variable?
 
 2 - If I didn't have let' after 'for' in startGame function, would it still work? Not far through this challenge yet to test.... I think.
@@ -72,7 +74,7 @@ var board = {
 4-  countSurroundingMine function example has 'cell' instead of cells when identifying rows and columns. Surely this will not work as the array for board is called Cells (plural) or is this identifying a different variable called cell?
 
 5 - Unsure how to loop through surrounding cells returned from getSurroundingCells, checking each to see if it is a mine and adding to a count variable if it is.
-    - Need a for loop (if/else ??)
+    - Need a for loop (if/else)?
     - Need a boolean for cells.isMine (true/false)?
     - 
     - 
