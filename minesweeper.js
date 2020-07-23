@@ -1,10 +1,11 @@
 document.addEventListener('DOMContentLoaded', startGame)
 
-//Board is an object literal. It contains a single array of 'cells'. (array identifier - [] )
-
-//Within the array, we have sub-objects with four properties and values, which define the physical position of the nine board positions (cells), tells us if a cell holds a mine, and if the cell is hidden. (object identifier - {} )
-
-
+// Board:
+//    - Is an object literal. 
+//    - Contains 1 array of 'cells'.
+//    - Array holds 9 sub-objects, each with 4 properties & values.
+//        - row & col = physical position on board. 
+//        - isMine & hidden - location of mines, status of cell. 
 var board = {
   cells: [
     {row: 0, col: 0, 
@@ -51,30 +52,50 @@ var board = {
       isMine: true,
       hidden: true,
     }, 
-
   ]
-
 }
 
-// startGame iterates loop by one until no longer true.
-// ...Creates surroundingMines var, assigns result of loop to countSurroundingMines function.
-// ...assigns EventListeners to left and right mouse click, and calls checkForWin function each time EventListener is triggered.
+// startGame:
+//    - Iterates loop by 1 through new surroundingMines var.
+//    - Assigns result to countSurroundingMines function.
+//    - Left and right click initiate checkForWin function.
 
 function startGame () {
   for (let i = 0; i < board.cells.length; i++) {
-   board.cells[i].surroundingMines = countSurroundingMines(board.cells[i])
-   document.addEventListener("click", checkForWin);
-   document.addEventListener("contextmenu", checkForWin);
-  }
-  // Don't remove this function call: it makes the game work!
-  lib.initBoard()
+   board.cells[i].surroundingMines = countSurroundingMines(board.cells[i]) }
+   document.addEventListener("click", checkForWin)
+   document.addEventListener("contextmenu", checkForWin)
 }
+   //ADDEVENTLISTENERS NOT WORKING - WHY?
+   //ERROR WITH LIB.INITBOARD FUNCTION - WHY?
+  
+  lib.initBoard()
 
-// Define this function to look for a win condition:
-//
-// 1. Are all of the cells that are NOT mines visible?
-// 2. Are all of the mines marked?
+  
+//  QUESTIONS re checkForWin:
+//Why does var winner need to be declared as true at top?
+//Why do we change the var to false in same function before using it for assigned value - true?
+//This function doesn't work yet - "good job" not displayed.
+
 function checkForWin () {
+  var winner = true
+  for (i = 0; i < board.cells.length; i++) 
+  {
+  if (board.cells[i].isMine && !board.cells[i].isMarked) 
+  {
+   winner = false 
+  } 
+  if (board.cells[i].isMarked && board.cells[i].hidden)
+  {
+   winner = false 
+  }
+  if (board.cells[i].isMine && board.cells[i].isMarked)
+  {
+    winner = true
+    lib.displayMessage("Good job.")
+  }
+    
+}
 
   // You can use this function call to declare a winner (once you've
   // detected that they've won, that is!)
