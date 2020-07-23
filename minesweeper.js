@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', startGame)
 // Board:
 //    - Is an object literal. 
 //    - Contains 1 array of 'cells'.
-//    - Array holds 9 sub-objects, each with 4 properties & values.
+//    - Array holds 9 sub-objects, with 4 properties & values.
 //        - row & col = physical position on board. 
 //        - isMine & hidden - location of mines, status of cell. 
 var board = {
@@ -62,40 +62,21 @@ var board = {
 
 function startGame () {
   for (let i = 0; i < board.cells.length; i++) {
-   board.cells[i].surroundingMines = countSurroundingMines(board.cells[i]) }
-   document.addEventListener("click", checkForWin)
-   document.addEventListener("contextmenu", checkForWin)
-}
-   //ADDEVENTLISTENERS NOT WORKING - WHY?
-   //ERROR WITH LIB.INITBOARD FUNCTION - WHY?
-  
+   board.cells[i].surroundingMines = countSurroundingMines(board.cells[i]) 
+  }
+  document.addEventListener("click", checkForWin)
+  document.addEventListener("contextmenu", checkForWin)
   lib.initBoard()
-
-  
-//  QUESTIONS re checkForWin:
-//Why does var winner need to be declared as true at top?
-//Why do we change the var to false in same function before using it for assigned value - true?
-//This function doesn't work yet - "good job" not displayed.
+}
 
 function checkForWin () {
-  var winner = true
-  for (i = 0; i < board.cells.length; i++) 
-  {
-  if (board.cells[i].isMine && !board.cells[i].isMarked) 
-  {
-   winner = false 
-  } 
-  if (board.cells[i].isMarked && board.cells[i].hidden)
-  {
-   winner = false 
+  for (i = 0; i < board.cells.length; i++) {
+    if ((board.cells[i].isMine == true && board.cells[i].isMarked == false) || (board.cells[i].isMine == false && board.cells[i].hidden == true))
+    {
+    return false 
+    }  
   }
-  if (board.cells[i].isMine && board.cells[i].isMarked)
-  {
-    winner = true
-    lib.displayMessage("Good job.")
-  }
-    
-}
+  lib.displayMessage("Ka pai!")
 
   // You can use this function call to declare a winner (once you've
   // detected that they've won, that is!)
